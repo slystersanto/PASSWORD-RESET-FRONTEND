@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://password-reset-backend-84ia.onrender.com/sendmail", {
+      const response = await axios.post("https://password-reset-backend-84ia.onrender.com/sendmail",{
         email,
       });
       console.log(response.data);
