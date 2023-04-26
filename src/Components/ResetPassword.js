@@ -11,7 +11,11 @@ function ResetPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`https://password-reset-backend-84ia.onrender.com/changepassword/${params.get("email")}`, { password1, password2 });
+      const response = await axios.post(`https://password-reset-backend-84ia.onrender.com/changepassword/${params.get("email")}`, { password1, password2 },{
+        headers:{
+          Authorization:`${window.localStorage.getItem("token")}`
+        }
+      });
       console.log(response.data);
       // show success message to user
       alert("Password Reset Successful!")

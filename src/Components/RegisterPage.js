@@ -16,7 +16,11 @@ const RegisterPage = () => {
       return;
     }
     try {
-      const res = await axios.post("https://password-reset-backend-84ia.onrender.com/register", { email, password });
+      const res = await axios.post("https://password-reset-backend-84ia.onrender.com/register", { email, password },{
+        headers:{
+          Authorization:`${window.localStorage.getItem("token")}`
+        }
+      });
       console.log(res.data);
       alert('Registered Successfully');
       setEmail("");

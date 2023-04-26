@@ -10,15 +10,10 @@ const ForgotPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://password-reset-backend-84ia.onrender.com/sendmail", {
+      const response = await axios.post("http://localhost:7789/sendmail", {
         email,
-      },{
-        headers:{
-          Authorization:`${window.localStorage.getItem("token")}`
-        }
       });
       console.log(response.data);
-      alert(' OTP sent to your mail successfully')
       setShowModal(true);
     } catch (error) {
       console.error(error);
@@ -30,7 +25,7 @@ const ForgotPassword = () => {
     console.log(verificationCode);
     setShowModal(false);
     // Redirect to the password reset page
-    window.location.href = `/reset-password?email=${email}`;
+    window.location.href = "/reset-password";
   };
 
   return (
@@ -47,26 +42,24 @@ const ForgotPassword = () => {
           maxWidth: "400px",
           width: "100%",
           padding: "20px",
-          border: "1px solid black",
-          borderRadius:"10px",
-          
+          border: "1px solid #ccc",
         }}
       >
-        <h1 style={{ textAlign: "center" }}>Forgot Password!</h1>
+        <h1 style={{ textAlign: "center" }}>Forget Password!</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: "10px" }}>
             <label
               htmlFor="email"
               style={{ display: "block", marginBottom: "5px" }}
             >
-              Enter Your Email address:
+              Email address:
             </label>
             <input
               type="email"
               id="email"
               required
               style={{
-                width: "375px",
+                width: "100%",
                 padding: "10px",
                 fontSize: "16px",
                 borderRadius: "5px",
@@ -79,12 +72,12 @@ const ForgotPassword = () => {
           <button
             type="submit"
             style={{
-              width: "150px",
+              width: "100%",
               padding: "10px",
               fontSize: "16px",
               borderRadius: "5px",
               border: "none",
-              backgroundColor: "#463a3a",
+              backgroundColor: "#ff5a5f",
               color: "#fff",
               cursor: "pointer",
             }}
@@ -112,8 +105,7 @@ const ForgotPassword = () => {
                 padding: "20px",
                 borderRadius: "5px",
                 maxWidth: "400px",
-                height:"260px",
-                width: "400px",
+                width: "100%",
               }}
             >
               <h2 style={{ textAlign: "center" }}>Enter Verification Code</h2>
@@ -123,14 +115,14 @@ const ForgotPassword = () => {
                     htmlFor="verificationCode"
                     style={{ display: "block", marginBottom: "5px" }}
                   >
-                    E-mail verification code here:
+                    Verification code:
                   </label>
                   <input
                     type="text"
                     id="verificationCode"
                     required
                     style={{
-                      width: "380px",
+                      width: "100%",
                       padding: "10px",
                       fontSize: "16px",
                       borderRadius: "5px",
@@ -145,7 +137,7 @@ const ForgotPassword = () => {
                 <button
                   type="submit"
                   style={{
-                    width: "150px",
+                    width: "100%",
                     padding: "10px",
                     fontSize: "16px",
                     borderRadius: "5px",
