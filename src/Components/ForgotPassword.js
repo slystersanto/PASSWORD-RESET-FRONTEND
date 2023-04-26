@@ -12,10 +12,6 @@ const ForgotPassword = () => {
     try {
       const response = await axios.post("https://password-reset-backend-84ia.onrender.com/sendmail", {
         email,
-      },{
-        headers:{
-          Authorization:`${window.localStorage.getItem("token")}`
-        }
       });
       console.log(response.data);
       alert(' OTP sent to your mail successfully')
